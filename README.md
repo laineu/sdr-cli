@@ -5,7 +5,7 @@ steam datagram relay manager, mainly used for region picking
 * only linux
 * only firewalld
 * only tf2 and cs2 tested
-* only usa whitelist currently
+* whitelist based (supported: usa, china, australia, japan, korea, europe)
 
 ## usage
 these examples will output a command that you can use to blacklist all ips that do not fit the whitelist
