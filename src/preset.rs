@@ -2,23 +2,31 @@ use std::str::FromStr;
 
 #[derive(Debug)]
 pub enum Preset {
-    USA,
+    NorthAmerica,
     China,
     Australia,
     Japan,
     Korea,
     Europe,
+    SouthAmerica,
+    India,
+    MiddleEast,
+    Africa,
 }
 
 impl Preset {
     pub fn get_preset(&self) -> &[&str] {
         match self {
-            Preset::USA => PRESET_USA,
+            Preset::NorthAmerica => PRESET_NORTH_AMERICA,
             Preset::China => PRESET_CHINA,
             Preset::Australia => PRESET_AUSTRALIA,
             Preset::Japan => PRESET_JAPAN,
             Preset::Korea => PRESET_KOREA,
             Preset::Europe => PRESET_EUROPE,
+            Preset::SouthAmerica => PRESET_SOUTH_AMERICA,
+            Preset::India => PRESET_INDIA,
+            Preset::MiddleEast => PRESET_MIDDLE_EAST,
+            Preset::Africa => PRESET_AFRICA,
         }
     }
 }
@@ -27,18 +35,22 @@ impl FromStr for Preset {
     type Err = &'static str;
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
-            "usa" => Ok(Self::USA),
-            "china" => Ok(Self::China),
-            "australia" => Ok(Self::Australia),
-            "japan" => Ok(Self::Japan),
-            "korea" => Ok(Self::Korea),
-            "europe" => Ok(Self::Europe),
+            "na" => Ok(Self::NorthAmerica),
+            "cn" => Ok(Self::China),
+            "au" => Ok(Self::Australia),
+            "jp" => Ok(Self::Japan),
+            "kr" => Ok(Self::Korea),
+            "eu" => Ok(Self::Europe),
+            "sa" => Ok(Self::SouthAmerica),
+            "in" => Ok(Self::India),
+            "me" => Ok(Self::MiddleEast),
+            "af" => Ok(Self::Africa),
             _ => Err("unsupported"),
         }
     }
 }
 
-pub const PRESET_USA: &[&str] = &[
+pub const PRESET_NORTH_AMERICA: &[&str] = &[
     "atl", // Atlanta (Georgia)
     "dfw", // Dallas (Texas)
     "iad", // Sterling (Virginia)
@@ -99,4 +111,24 @@ pub const PRESET_EUROPE: &[&str] = &[
     "vie",  // Vienna (Austria)
     "waw",  // Warsaw (Poland)
     "sto2", // Stockholm - Bromma (Sweden)
+];
+
+pub const PRESET_SOUTH_AMERICA: &[&str] = &[
+    "gru", // Sao Paulo (Brazil)
+    "eze", // Buenos Aires (Argentina)
+    "scl", // Santiago (Chile)
+    "lim", // Lima (Peru)
+];
+
+pub const PRESET_INDIA: &[&str] = &[
+    "bom2", // Mumbai (India)
+    "maa2", // Chennai (India)
+];
+
+pub const PRESET_MIDDLE_EAST: &[&str] = &[
+    "dxb", // Dubai (United Arab Emirates)
+];
+
+pub const PRESET_AFRICA: &[&str] = &[
+    "jnb", // Johannesburg (South Africa)
 ];
